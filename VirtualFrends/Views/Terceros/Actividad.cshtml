@@ -1,0 +1,64 @@
+﻿@using VirtualFrends.Models
+@model IEnumerable<ViewDiario>
+<div class="container-fluid">
+    <div class=" col-md-12 ">
+        <div class="card">
+            <div class=" card-body">
+                <div class="row">
+                    <div class=" col-1">
+                        <img src="~/imagenes/logo80x30.jpg" alt="">
+                    </div>
+                    <div class="col-8 mb-2">
+                        <h3 class="card-title text-center">Balance General</h3>
+                    </div>
+                    <div class="col-3 mb-2">
+                        <p class="card-text">Saldo Disponible   $@ViewBag.Saldo</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 mb-2">
+                        <a class="btn bg-primary btn-block" href="~/Diario/SolComprar">Solicitar </a>
+                    </div>
+                    <div class="col-sm-2 mb-2">
+                        <a class="btn bg-success btn-block" href="~/Diario/Transferir">Trasladar </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" col-md-12 ">
+        <div class="card mb-2">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Concepto</th>
+                                <th>Operacion</th>
+                                <th>Email Operacion</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@Html.DisplayFor(modelItem => item.Fecha) </th>
+                                    <th>@Html.DisplayFor(modelItem => item.Concepto) </th>
+                                    <th>@Html.DisplayFor(modelItem => item.Operacion)</th>
+                                    <th>@Html.DisplayFor(modelItem => item.EmailOperacion)</th>
+                                    <th>@Html.DisplayFor(modelItem => item.Valor)</th>
+                                </tr>
+                            }
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

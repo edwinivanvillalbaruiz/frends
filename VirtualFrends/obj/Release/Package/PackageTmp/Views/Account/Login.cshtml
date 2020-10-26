@@ -1,0 +1,66 @@
+﻿@using VirtualFrends.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+<div> @ViewBag.error</div>
+
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5 ">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-1">Login</h3></div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputEmailAddress">Email</label>
+                                            @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "form-control" })
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="small mb-1" for="inputPassword">Password</label>
+                                            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "form-control" })
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+
+                                                @Html.CheckBoxFor(m => m.RememberMe)
+                                                @Html.LabelFor(m => m.RememberMe)
+
+                                                @*<input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
+                                                    <label class="custom-control-label">Remember password</label>*@
+                                            </div>
+                                        </div>
+                                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" href="password.html">Forgot Password?</a>
+                                            <input type="submit" value="Iniciar sesión" class="btn btn-primary" />
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="small"><a href="~/Account/ValidarEmail">Registrarse? Sign up!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

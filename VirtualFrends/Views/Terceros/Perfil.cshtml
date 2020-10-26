@@ -1,0 +1,71 @@
+﻿@model VirtualFrends.Models.Terceros
+<div id="layoutAuthentication_content">
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5 text-primary">
+                        <div class="card-header"><h3 class="text-center font-weight-light my-1">MI PERFIL</h3></div>
+                    </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <fieldset disabled>
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputNombres">Nombres</label>
+                                                    @Html.TextBoxFor(m => m.Nombres, new { @class = "form-control" })
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <fieldset disabled>
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputApellidos">Apellidos</label>
+                                                    @Html.TextBoxFor(m => m.Apellidos, new { @class = "form-control" })
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <fieldset disabled>
+                                            <label class="small mb-1" for="inputEmail">Email</label>
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                        </fieldset>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <fieldset disabled>
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputNombres">Documeto</label>
+                                                    @Html.TextBoxFor(m => m.Documento, new { @class = "form-control" })
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset disabled>
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="inputNombres">Celular</label>
+                                                    @Html.TextBoxFor(m => m.Celular, new { @class = "form-control" })
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                        <a class="small" href="~/Home/Index">Return to Home</a>
+                                        @Html.ActionLink("Modificar", "Editar", new { id = Model.IdTerceros }, new { @class = "btn btn-primary" })
+                                    </div> 
+
+                                     
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </main>
+</div>

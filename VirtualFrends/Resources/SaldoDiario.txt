@@ -1,0 +1,6 @@
+SELECT
+if(sum(d.Credito-d.Debito) is null,0,sum(Credito-Debito)) as Valor
+ from Diario d
+ JOIN Operaciones o on o.Id=d.IdOperacion
+ WHERE d.Email=@VarId
+ and Estado=1

@@ -1,0 +1,11 @@
+SELECT
+d.Fecha,
+d.IdTransaccion,
+o.Operacion,
+d.Concepto,
+d.Credito-d.Debito  Valor,
+d.Codigo,
+d.EmailOperacion 
+ from Diario d
+ JOIN Operaciones o on o.Id=d.IdOperacion
+ WHERE d.Email=@VarId

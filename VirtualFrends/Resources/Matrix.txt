@@ -1,0 +1,8 @@
+SELECT* from Terceros where Email in (SELECT CorreoInvitado from ViewTerceros WHERE EMAIL=@VarId)
+union
+SELECT* from Terceros where Email in
+(SELECT CorreoInvitado from ViewTerceros where Email in (SELECT CorreoInvitado from ViewTerceros WHERE EMAIL=@VarId))
+ union 
+ SELECT* from Terceros where Email in
+ (SELECT CorreoInvitado from ViewTerceros where Email in
+((SELECT CorreoInvitado from ViewTerceros where Email in (SELECT CorreoInvitado from ViewTerceros WHERE EMAIL=@VarId))));

@@ -1,0 +1,30 @@
+﻿
+@model IEnumerable<VirtualFrends.Models.Terceros>
+
+
+@(Html.DevExtreme().DataGrid<VirtualFrends.Models.Terceros>
+    ()
+    .DataSource(Model, new[] { "IdTerceros" })
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .HoverStateEnabled(true)
+    .ShowBorders(true)
+    .SearchPanel(p => p.Visible(true))
+    .FilterRow(f => f.Visible(true))
+
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Fecha);
+        columns.AddFor(m => m.Nombres);
+        columns.AddFor(m => m.Apellidos);
+        columns.AddFor(m => m.Email);
+        columns.AddFor(m => m.Celular);
+
+    }).Paging(paging => paging.PageSize(10))
+    .Pager(Pager =>
+    {
+        Pager.ShowPageSizeSelector(true);
+        Pager.AllowedPageSizes(new[] { 5, 10, 15, 20 });
+        Pager.ShowInfo(true);
+    })
+
+    )

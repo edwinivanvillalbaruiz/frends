@@ -1,0 +1,93 @@
+﻿@using VirtualFrends.Models
+@model Diario
+<h2>@ViewBag.error</h2>
+<div><h3 class="text-center font-weight-bold my-1 text-primary">Abnoar Compras Monedas</h3></div>
+
+@using (Html.BeginForm("AddAbonos", "Administracion", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <main>
+        <div class="container ">
+            <form>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <fieldset disabled>
+                            <div class="form-group">
+                                <label for="Balance" class="text-center font-weight-bold">Balance General</label>
+                                @Html.EditorFor(model => model.Saldo, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="Email" class="text-center font-weight-bold">Email Destinatario</label>
+                    @Html.TextBoxFor(m => m.EmailBeneficario, new { placeholder = "Email", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EmailBeneficario, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Cantidad" class="text-center font-weight-bold">Cantidad</label>
+                    @Html.TextBoxFor(m => m.Cantidad, new { id = "IdCantidad", placeholder = "Cantidad", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Concepto " class="text-center font-weight-bold">Concepto de la Operacion</label>
+                    @Html.TextBoxFor(m => m.Concepto, new { placeholder = "Concepto", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Concepto, "", new { @class = "text-danger" })
+                </div>
+            </form>
+            <div class="row ">
+                <div class="col-md-10"> <a class="small" href="~/Home/Index">Return to Home</a></div>
+                <div class="col-md-10  "><input type="submit" class="btn btn-primary" id="BtnAceptar" onclick="return Confirmar()" value="Enviar" /></div>
+            </div>
+        </div>
+    </main>
+}
+
+
+<script>
+    function Confirmar() {
+        var Respuesta = confirm("Estas seguro de Trasladar");
+        var cant = document.getElementById("IdCantidad").value;
+        if (Respuesta == true)
+        {
+            if (cant <= 0)
+            {
+                alert("Cantida debe ser mayor que 0");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }
+            else
+            if (@Model.Saldo<= 0)
+            {
+                alert("Saldo Insuficientes");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }
+            else
+            if (cant > @Model.Saldo)
+            {
+                alert("Saldo a transferir es mayor que el saldo");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            document.getElementById("BtnAceptar").disabled = false;
+            return false;
+        }
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

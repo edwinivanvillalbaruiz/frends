@@ -1,0 +1,223 @@
+﻿
+@using VirtualFrends.Models
+@model IEnumerable<TercerosNive>
+
+<main>
+
+    <div class="container-fluid">
+       
+        <ol class="breadcrumb mb-4 justify-content-center ">
+            <li class="breadcrumb-item active ">@ViewBag.EmailLogeado</li>
+        </ol>
+
+        <div class="row">
+
+            @if (Model.Count() >= 1)
+            {
+                <div class="col">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">@Model.First(a => a.Cont == 1 & a.Nivel == "Nivel1").Nombres</div>
+
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 1 & a.Nivel == "Nivel1").Email</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (Model.Count() >= 2)
+            {
+                <div class="col">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">@Model.First(a => a.Cont == 2 & a.Nivel == "Nivel1").Nombres</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 2 & a.Nivel == "Nivel1").Email</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+
+        <div class="row">
+            @if (Model.Count() >= 3)
+            {
+                <div class="col">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">@Model.First(a => a.Cont == 1 & a.Nivel == "Nivel2").Nombres</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 1 & a.Nivel == "Nivel2").Email</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>}
+
+            @if (Model.Count() >= 4)
+            {
+                <div class="col">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">@Model.First(a => a.Cont == 2 & a.Nivel == "Nivel2").Nombres</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 2 & a.Nivel == "Nivel2").Email</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>}
+
+            @if (Model.Count() >= 5)
+            {
+                <div class="col">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">@Model.First(a => a.Cont == 3 & a.Nivel == "Nivel2").Nombres</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 3 & a.Nivel == "Nivel2").Email</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+
+            @if (Model.Count() >= 6)
+            {
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">@Model.First(a => a.Cont == 4 & a.Nivel == "Nivel2").Nombres</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 4 & a.Nivel == "Nivel2").Email</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>}
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+
+                <div class="row">
+                    @if (Model.Count() >= 7)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 1 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 1 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.Count() >= 8)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 2 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 2 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>}
+                    @if (Model.Count() >= 9)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 3 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 3 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+
+                    @if (Model.Count() >= 10)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 4 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 4 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="row">
+                    @if (Model.Count() >= 11)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 5 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 5 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>}
+                    @if (Model.Count() >= 12)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 6 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 6 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Count() >= 13)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 7 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 7 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Count() >= 14)
+                    {
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">@Model.First(a => a.Cont == 8 & a.Nivel == "Nivel3").Nombres</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="#">@Model.First(a => a.Cont == 8 & a.Nivel == "Nivel3").Email</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+            <div class="form-group mt-4 mb-0">
+             
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "btn btn-success" })
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</main>

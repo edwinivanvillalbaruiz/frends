@@ -1,0 +1,54 @@
+﻿
+@using VirtualFrends.Models
+@model IEnumerable<TercerosNive>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Listado General de Clientes
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Cont</th>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Celular</th>
+                        <th>Nivel</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Cont</th>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Celular</th>
+                        <th>Nivel</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th> @Html.DisplayFor(modelItem => item.Cont) </th>
+                            <th> @Html.DisplayFor(modelItem => item.Fecha) </th>
+                            <th>@Html.DisplayFor(modelItem => item.Nombres) </th>
+                            <th> @Html.DisplayFor(modelItem => item.Apellidos)</th>
+                            <th> @Html.DisplayFor(modelItem => item.Email)</th>
+                            <th> @Html.DisplayFor(modelItem => item.Celular)</th>
+                            <th> @Html.DisplayFor(modelItem => item.Nivel)</th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

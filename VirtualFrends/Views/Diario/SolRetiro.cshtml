@@ -1,0 +1,103 @@
+﻿@using VirtualFrends.Models
+@model Ventas
+
+<div><h3 class="text-center font-weight-bold my-1 text-primary">Solicitud de Retiros</h3></div>
+
+<h4>@ViewBag.error</h4>
+
+
+
+
+
+@using (Html.BeginForm("AddRetiro", "Diario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <main>
+        <div class="container ">
+            <form>
+
+                <fieldset disabled>
+                    <div class="form-group">
+                        <label for="disabledTextInput">Balance</label>
+                        <input type="text" id="disabledTextInput" class="form-control" value=@ViewBag.Saldo>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="Cuenta" class="text-center font-weight-bold">Entidad Financiera </label>
+                    @Html.DropDownList("Entidad", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Entidad, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    <label for="Cuenta" class="text-center font-weight-bold">Numero de Cuenta  </label>
+                    @Html.TextBoxFor(m => m.NumeroCuenta, new { placeholder = "Numero de Cuenta", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NumeroCuenta, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="TipoCuenta" class="text-center font-weight-bold">Tipo Cuenta  </label>
+                    @Html.DropDownList("TipoCuenta", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TipoCuenta, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Concepto" class="text-center font-weight-bold">Concepto  </label>
+                    @Html.TextBoxFor(m => m.Concepto, new { placeholder = "Concepto", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Concepto, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Valor" class="text-center font-weight-bold">Valor</label>
+                    @Html.TextBoxFor(m => m.Valor, new { id = "Valor", placeholder = "Valor", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                </div>
+
+
+
+            </form>
+            <button type="submit" class="btn btn-primary" id="BtnAceptar" onclick="return Confirmar()">Enviar</button>
+            <a class="btn" href="~/Home/Index">Volver home  </a>
+        </div>
+    </main>
+}
+
+<script>
+    function Confirmar() {
+        var Respuesta = confirm("Estas seguro de Solictar Retiro");
+        var cant = document.getElementById("Valor").value;
+        if (Respuesta == true)
+        {
+            if (cant <= 0)
+            {
+                alert("Cantida debe ser mayor que 0");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }
+            else
+            if (@ViewBag.Saldo<= 0)
+            {
+                alert("Saldo Insuficientes");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }
+            else
+            if (cant >@ViewBag.Saldo)
+            {
+                alert("Saldo a Retirar es mayor que el saldo");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        else
+        {
+            document.getElementById("BtnAceptar").disabled = false;
+            return false;
+        }
+    }
+</script>

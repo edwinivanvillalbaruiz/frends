@@ -1,0 +1,67 @@
+﻿
+<h2>Seleccione Una Forma de Pago</h2>
+
+
+@using (Html.BeginForm("ComprarMoneda", "Diario", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="card mt-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="card-body btn  ">
+                    <img src="~/imagenes/bancogeneral.jpg">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Banco_General" name="entidad" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+                    Cantidad Minima 1 Usd
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card mt-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="card-body btn">
+                    <img src="~/imagenes/Scotiabank.jpg">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Scotian_Bank" name="entidad" class="btn btn-default" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+                    Cantidad Minima 1 Usd
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="card-body btn">
+                
+                    <div class="col-md-offset-2 col-md-10">
+                        <img src="~/imagenes/nequi2.jpg">
+                        <input type="submit" value="Nequi" name="entidad" class="btn btn-default" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+                    Cantidad Minima 1 Usd
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

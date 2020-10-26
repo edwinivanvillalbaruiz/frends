@@ -1,0 +1,8 @@
+SELECT t.* ,'Nivel1'as Nivel ,CONCAT_WS(' ',t.Apellidos,t.Nombres) as NombreCompleto From Terceros t where Email in (SELECT CorreoInvitado from ViewTerceros WHERE EMAIL=@VarId)
+union
+SELECT t.* ,'Nivel1'as Nivel ,CONCAT_WS(' ',t.Apellidos,t.Nombres) as NombreCompleto From Terceros t  where Email in
+(SELECT CorreoInvitado from ViewTerceros where Email in (SELECT CorreoInvitado from ViewTerceros WHERE EMAIL=@VarId))
+ union 
+ SELECT t.* ,'Nivel1'as Nivel ,CONCAT_WS(' ',t.Apellidos,t.Nombres) as NombreCompleto From Terceros t where Email in
+ (SELECT CorreoInvitado from ViewTerceros where Email in
+((SELECT CorreoInvitado from ViewTerceros where Email in (SELECT CorreoInvitado from ViewTerceros WHERE EMAIL=@VarId))));

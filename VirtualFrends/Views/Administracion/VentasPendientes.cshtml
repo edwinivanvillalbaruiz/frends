@@ -1,0 +1,39 @@
+﻿@using VirtualFrends.Models
+@model IEnumerable<Ventas>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        OPERACIONES PENDIENTES
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Concepto</th>
+                        <th>Email</th>
+                        <th>Valor</th>
+                        <th>Abonar</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th> @Html.DisplayFor(modelItem => item.Fecha) </th>
+                            <th>@Html.DisplayFor(modelItem => item.Concepto) </th>
+                            <th> @Html.DisplayFor(modelItem => item.Email)</th>
+                            <th> @Html.DisplayFor(modelItem => item.Valor)</th>
+                             
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

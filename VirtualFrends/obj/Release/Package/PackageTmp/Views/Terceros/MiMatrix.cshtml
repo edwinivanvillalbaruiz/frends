@@ -1,0 +1,60 @@
+﻿@*@using VirtualFrends.Models
+@model IEnumerable<TercerosNive>
+
+<div class="card-header"><h3 class="text-center font-weight-light ">MI Matrix</h3></div>
+@(Html.DevExtreme().DataGrid<VirtualFrends.Models.TercerosNive>
+    ()
+    .DataSource(Model, new[] { "IdTerceros" })
+    .Selection(s => s.Mode(SelectionMode.Single))
+    .HoverStateEnabled(true)
+    .ShowBorders(true)
+    .Grouping(grouping => grouping.AutoExpandAll(true))
+    .SearchPanel(p => p.Visible(true))
+    .FilterRow(f=> f.Visible(true))
+    .Paging(paging => paging.PageSize(14))
+
+    .Columns(columns => {
+
+        columns.AddFor(m => m.Email);
+        columns.AddFor(m => m.NombreC);
+        columns.AddFor(m => m.Celular);
+        columns.AddFor(m => m.Nivel).GroupIndex(0);
+
+
+    }).Summary(s=> s.GroupItems(items=> { items.AddFor(m => m.Email).SummaryType(SummaryType.Count); })))*@
+
+
+
+<div class="card-header"><h3 class="text-center font-weight-light ">Mi Matrix</h3></div>
+
+@using VirtualFrends.Models
+@model IEnumerable<TercerosNive>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        OPERACIONES PENDIENTES
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Nombres</th>
+                        <th>Nivel</th>        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th> @Html.DisplayFor(modelItem => item.Email) </th>
+                            <th>@Html.DisplayFor(modelItem => item.NombreC) </th>
+                            <th> @Html.DisplayFor(modelItem => item.Nivel)</th>       
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

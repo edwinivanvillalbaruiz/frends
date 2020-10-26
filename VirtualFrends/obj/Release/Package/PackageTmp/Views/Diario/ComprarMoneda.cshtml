@@ -1,0 +1,97 @@
+﻿@using VirtualFrends.Models
+@model Compras
+
+<div><h3 class="text-center font-weight-bold my-1 text-primary">Compra de Saldo</h3></div>
+<h2> @ViewBag.Entidad</h2>
+<h4>@ViewBag.error</h4>
+
+
+
+
+
+@using (Html.BeginForm("AddMoneda", "Diario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <main>
+        <div class="container ">
+            <form>
+
+                <fieldset disabled>
+                    <div class="form-group disabled">
+                        <label for="Entidad" class="text-center font-weight-bold">Concepto  </label>
+                        @Html.TextBoxFor(m => m.Entidad, new { placeholder = "Entidad", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Entidad, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="Concepto" class="text-center font-weight-bold">Concepto  </label>
+                    @Html.TextBoxFor(m => m.Concepto, new { placeholder = "Concepto", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Concepto, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Valor" class="text-center font-weight-bold">Valor</label>
+                    @Html.TextBoxFor(m => m.Valor, new { id = "Valor", placeholder = "Valor", @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Soporte" class="text-center font-weight-bold">Soporte</label>
+                    <input type="file" class="form-control-file" id="Documento" name="Documento">
+                    
+                </div>
+
+            </form>
+            <button type="submit" class="btn btn-primary" id="BtnAceptar" onclick="return Confirmar()">Enviar</button>
+            <a class="btn" href="~/Home/Index">Volver home  </a>
+        </div>
+    </main>
+}
+
+
+
+
+
+
+
+
+<script>
+    function Confirmar() {
+        var Respuesta = confirm("Estas seguro de Solicitar");
+        var cant = document.getElementById("Valor").value;
+       
+        if (Respuesta == true)
+        {
+            if (cant <= 0)
+            {
+                alert("Cantida debe ser mayor que 0");
+                document.getElementById("BtnAceptar").disabled = false;
+                return false;
+            }           
+            else
+                if(document.getElementById("Documento").files.length == 0) {
+                    alert("Falta Seleccionar Soporte");
+                    document.getElementById("BtnAceptar").disabled = false;
+                    return false;
+                }   
+
+            {
+                return true;
+            }
+        }
+        else
+        {
+            document.getElementById("BtnAceptar").disabled = false;
+            return false;
+        }
+    }
+</script>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
